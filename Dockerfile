@@ -20,7 +20,7 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #  THE SOFTWARE.
 
-FROM FROM maven:3.5-jdk-8
+FROM maven:3.5-jdk-8
 MAINTAINER Oleg Nenashev <o.v.nenashev@gmail.com>
 
 ENV HOME /home/jenkins
