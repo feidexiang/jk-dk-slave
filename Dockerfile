@@ -22,10 +22,12 @@
 
 FROM maven:3.5-jdk-8
 MAINTAINER Oleg Nenashev <o.v.nenashev@gmail.com>
+USER root
+chmod 777 /root/.m2/copy_reference_file.log.
 
 ENV HOME /home/jenkins
 RUN groupadd -g 10000 jenkins
-RUN useradd -c "Jenkins user" -d $HOME -u 0 -g 10000 -m jenkins
+RUN useradd -c "Jenkins user" -d $HOME -u 10000 -g 10000 -m jenkins
 LABEL Description="This is a base image, which provides the Jenkins agent executable (slave.jar)" Vendor="Jenkins project" Version="3.16"
 
 ARG VERSION=3.16
