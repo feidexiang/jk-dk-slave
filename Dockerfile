@@ -37,7 +37,8 @@ RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-c
 
 USER jenkins
 ENV AGENT_WORKDIR=${AGENT_WORKDIR}
-RUN mkdir /home/jenkins/.jenkins && mkdir -p ${AGENT_WORKDIR}
+RUN mkdir /home/jenkins/.jenkins && mkdir -p ${AGENT_WORKDIR} \
+  && chmod 777 /root/.m2/copy_reference_file.log.
 
 VOLUME /home/jenkins/.jenkins
 VOLUME ${AGENT_WORKDIR}
