@@ -22,8 +22,6 @@
 
 FROM maven:3.5-jdk-8
 MAINTAINER Oleg Nenashev <o.v.nenashev@gmail.com>
-USER root
-chmod 777 /root/.m2/copy_reference_file.log
 
 ENV HOME /home/jenkins
 RUN groupadd -g 10000 jenkins
