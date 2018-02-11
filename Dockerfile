@@ -25,7 +25,7 @@ MAINTAINER Oleg Nenashev <o.v.nenashev@gmail.com>
 
 ENV HOME /home/jenkins 
 # RUN groupadd -g 10000 jenkins
-RUN useradd -c "Jenkins user" -d $HOME -u 10000  -m jenkins
+RUN useradd -c "Jenkins user" -d $HOME -u 10000 -g 10000 -m jenkins
 LABEL Description="This is a base image, which provides the Jenkins agent executable (slave.jar)" Vendor="Jenkins project" Version="3.16"
 
 ARG VERSION=3.16
@@ -35,7 +35,7 @@ RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-c
   && chmod 755 /usr/share/jenkins \
   && chmod 644 /usr/share/jenkins/slave.jar
   
-RUN chmod +x /root/.m2/copy_reference_file.log
+RUN chown -R 10000 /root/.m2/
   
 USER jenkins
 ENV AGENT_WORKDIR=${AGENT_WORKDIR}
